@@ -13,4 +13,4 @@ Feature: Search Yelp
       Examples:
       | type  | neighborhood |
       | Pizza | Glen Park    |
-      #| Fish  | Glen Park    |
+      | Fish  | Glen Park    |

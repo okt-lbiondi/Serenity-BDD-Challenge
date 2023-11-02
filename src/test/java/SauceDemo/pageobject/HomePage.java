@@ -1,20 +1,14 @@
 package SauceDemo.pageobject;
 
-import cucumber.api.java.eo.Do;
-import jnr.ffi.annotations.In;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 public class HomePage extends PageObject {
 
@@ -69,7 +63,7 @@ public class HomePage extends PageObject {
 
     public boolean areProductsOrderedByOption(String option) {
         //TODO: switch case to based on option check list is ordered
-        Boolean result = false;
+        boolean result = false;
         List<WebElementFacade> inventoryItems = inventoryContainer.thenFindAll(By.className("inventory_item"));
 
         for (WebElementFacade element : inventoryItems){
@@ -86,13 +80,13 @@ public class HomePage extends PageObject {
                 List<String> sortedNamesAZ = new ArrayList<>(inventoryItemNames);
                 Collections.sort(sortedNamesAZ);
 
-                result = inventoryItemPrices.equals(sortedNamesAZ);
+                result = inventoryItemNames.equals(sortedNamesAZ);
                 break;
             case "Name (Z to A)":
                 List<String> sortedNamesZA = new ArrayList<>(inventoryItemNames);
                 Collections.sort(sortedNamesZA, Collections.reverseOrder());
 
-                result = inventoryItemPrices.equals(sortedNamesZA);
+                result = inventoryItemNames.equals(sortedNamesZA);
                 break;
             case "Price (low to high)":
                 List<Double> sortedPricesAsc = new ArrayList<>(inventoryItemPrices);

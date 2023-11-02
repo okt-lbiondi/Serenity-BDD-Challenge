@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>SeleniumYelp</artifactId>
+    <artifactId>SeleniumBDD</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -33,8 +33,8 @@
     </profiles>
 
     <properties>
-        <serenity.version>2.0.40</serenity.version>
-        <serenity.maven.version>2.0.40</serenity.maven.version>
+        <serenity.version>2.0.49</serenity.version>
+        <serenity.maven.version>2.0.49</serenity.maven.version>
         <serenity.cucumber.version>1.9.31</serenity.cucumber.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <encoding>UTF-8</encoding>
@@ -133,6 +133,12 @@
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-rest-assured</artifactId>
             <version>2.0.90</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-ensure</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>

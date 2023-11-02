@@ -5,10 +5,10 @@ Feature: Sauce Demo
     When user logins with standard_user and secret_sauce
     Then user should be logged in successfully
 
-#      Scenario: Go to about page
-#        When user goes to about page
-#        Then user validates about page
-#        And user navigates back to previous page
+      Scenario: Go to about page
+        When user goes to about page
+        Then user validates about page
+        And user navigates back to previous page
 
       Scenario: Order products by options available
         When user orders products by Price (high to low)

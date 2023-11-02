@@ -34,6 +34,8 @@ public class CartPage extends PageObject {
     @FindBy(xpath = "//div[contains(@class,'summary_total_label')]")
     WebElementFacade totalPriceLabel;
 
+    @FindBy(className = "summary_subtotal_label")
+    WebElementFacade subTotalPriceLabel;
     @FindBy(className = "summary_tax_label")
     WebElementFacade taxPriceLabel;
 
@@ -45,6 +47,9 @@ public class CartPage extends PageObject {
 
     @FindBy(className = "complete-header")
     WebElementFacade checkoutCompleteHeader;
+
+    @FindBy(className = "summary_value_label")
+    List<WebElementFacade> summaryValues;
 
     public boolean isNumberOfProductsEqualTo(int products) {
         List<WebElementFacade> cartItems = cartContainer.thenFindAll(By.className("cart_item"));
@@ -82,7 +87,7 @@ public class CartPage extends PageObject {
     }
 
     public double getCartSumPrice(){
-        double taxPrice = Double.valueOf(taxPriceLabel.getText().substring(6));
+        double taxPrice = getTaxPrice();
         List<Double> cartItemPrices = getCartProductPrices(checkoutSummaryContainer.thenFindAll(By.className("cart_item")));
 
         double cartSumPrice= 0.00 + taxPrice;
@@ -95,7 +100,7 @@ public class CartPage extends PageObject {
     }
 
     public double getInventorySumPrice(){
-        double taxPrice = Double.valueOf(taxPriceLabel.getText().substring(6));
+        double taxPrice = getTaxPrice();
         List<Double> cartItemPrices = getCartProductPrices(checkoutSummaryContainer.thenFindAll(By.className("cart_item")));
 
         double inventorySumPrice = 0.00 + taxPrice;
@@ -139,5 +144,17 @@ public class CartPage extends PageObject {
 
     public String getCheckoutCompleteHeaderText() {
         return checkoutCompleteHeader.getText();
+    }
+
+    public String getCartSubTotalPrice() {
+        return subTotalPriceLabel.getText().substring(13);
+    }
+
+    public Double getTaxPrice() {
+        return Double.valueOf(taxPriceLabel.getText().substring(6));
+    }
+
+    public String getSummaryValues(int i) {
+        return summaryValues.get(i).getText();
     }
 }

@@ -5,7 +5,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class UserStepDefinitions {
@@ -21,7 +20,6 @@ public class UserStepDefinitions {
     public void userLogsIn(String username, String password){
        user.entersUsername(username);
        user.entersPasswword(password);
-       Serenity.takeScreenshot();
        user.clicksLoginButton();
     }
 
@@ -76,7 +74,6 @@ public class UserStepDefinitions {
     @When("^user fills personal data to continue$")
     public void userFillsPersonalDataToContinue() {
         user.fillsPersonalData();
-        Serenity.takeScreenshot();
         user.continuesCheckoutToStepTwo();
     }
 

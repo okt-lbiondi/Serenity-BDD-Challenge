@@ -3,6 +3,7 @@ package SauceDemo.steps;
 import SauceDemo.pageobject.CartPage;
 import SauceDemo.pageobject.HomePage;
 import SauceDemo.pageobject.LoginPage;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.ScenarioActor;
 import net.thucydides.core.annotations.Steps;
 import org.assertj.core.api.Assertions;
@@ -29,6 +30,7 @@ public class UserSauce extends ScenarioActor {
     }
 
     public void clicksLoginButton(){
+        Serenity.takeScreenshot();
         loginPage.clickLoginButton();
     }
 
@@ -84,6 +86,7 @@ public class UserSauce extends ScenarioActor {
 
     public void fillsPersonalData() {
         cartPage.fillPersonalData("Lucas", "Serenity", "123456");
+        Serenity.takeScreenshot();
     }
 
     public void continuesCheckoutToStepTwo() {
@@ -93,6 +96,13 @@ public class UserSauce extends ScenarioActor {
     public void verifiesPriceisCorrect() {
         Assertions.assertThat(cartPage.getCartTotalPrice()).isEqualTo(cartPage.getCartSumPrice(),Assertions.within(0.009));
         Assertions.assertThat(cartPage.getCartTotalPrice()).isEqualTo(cartPage.getInventorySumPrice(),Assertions.within(0.009));
+        Serenity.recordReportData().withTitle("Cart Information").andContents(
+                "Payment info is: " + cartPage.getSummaryValues(0)
+                + "\nShipping info is: " + cartPage.getSummaryValues(1));
+        Serenity.recordReportData().asEvidence().withTitle("Cart Prices").andContents(
+                "Cart Total Price is: $" + cartPage.getCartTotalPrice()
+                + "\nCart SubTotal Price is: $" + cartPage.getCartSubTotalPrice()
+                + "\nCart Tax Price is: $" + cartPage.getTaxPrice());
     }
 
     public void finishesCheckout() {

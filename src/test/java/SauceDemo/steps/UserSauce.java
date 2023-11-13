@@ -5,7 +5,7 @@ import SauceDemo.pageobject.HomePage;
 import SauceDemo.pageobject.LoginPage;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.steps.ScenarioActor;
-import net.thucydides.core.annotations.Steps;
+import net.serenitybdd.annotations.Steps;
 import org.assertj.core.api.Assertions;
 
 public class UserSauce extends ScenarioActor {

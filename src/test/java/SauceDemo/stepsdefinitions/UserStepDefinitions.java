@@ -1,11 +1,8 @@
 package SauceDemo.stepsdefinitions;
 
 import SauceDemo.steps.UserSauce;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import net.thucydides.core.annotations.Steps;
+import io.cucumber.java.en.*;
+import net.serenitybdd.annotations.Steps;
 
 public class UserStepDefinitions {
     @Steps(shared = true)

@@ -2,7 +2,7 @@ package Yelp.steps;
 
 import Yelp.pageobject.MainPage;
 import net.serenitybdd.core.steps.ScenarioActor;
-import net.thucydides.core.annotations.Steps;
+import net.serenitybdd.annotations.Steps;
 
 import java.util.Set;
 

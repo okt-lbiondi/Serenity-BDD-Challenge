@@ -7,7 +7,6 @@
     <groupId>org.example</groupId>
     <artifactId>SeleniumBDD</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <profiles>
         <profile>
@@ -15,8 +14,9 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.1</version>
+                        <version>3.1.2</version>
                         <configuration>
                             <includes>
                                 <include>**/When*.java</include>
@@ -33,10 +33,10 @@
     </profiles>
 
     <properties>
-        <serenity.version>2.0.49</serenity.version>
-        <serenity.maven.version>2.0.49</serenity.maven.version>
-        <serenity.cucumber.version>1.9.31</serenity.cucumber.version>
+        <serenity.version>4.0.1</serenity.version>
+        <serenity.maven.version>4.0.1</serenity.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <serenity.cucumber.version>4.0.1</serenity.cucumber.version>
         <encoding>UTF-8</encoding>
         <parallel.tests>4</parallel.tests>
     </properties>
@@ -57,7 +57,7 @@
                 <enabled>false</enabled>
             </snapshots>
             <id>central</id>
-            <name>bintray</name>
+            <name>bintray-plugins</name>
             <url>https://jcenter.bintray.com</url>
         </pluginRepository>
     </pluginRepositories>
@@ -65,7 +65,7 @@
     <distributionManagement>
         <repository>
             <id>myMavenRepo.write</id>
-            <url>https://mymavenrepo.com/repo/le8DLXMQn2dV2jW0nL7e</url>
+            <url>https://mymavenrepo.com/repo/le8DLXMQn2dV2jW0nL7e/</url>
         </repository>
     </distributionManagement>
 
@@ -73,7 +73,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
+            <version>1.4.7</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson-parent</artifactId>
-            <version>2.8.1</version>
+            <version>2.10.1</version>
             <type>pom</type>
         </dependency>
         <dependency>
@@ -109,18 +109,18 @@
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
             <version>${serenity.cucumber.version}</version>
-            <scope>compile</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>compile</scope>
+            <version>4.13.2</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.6.2</version>
+            <version>3.24.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -132,16 +132,20 @@
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-rest-assured</artifactId>
-            <version>2.0.90</version>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-ensure</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
+            <version>3.6.12</version>
         </dependency>
     </dependencies>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>3.1.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -152,11 +156,12 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.1</version>
+                <version>3.1.2</version>
                 <configuration>
                     <includes>
-                        <include>**/Runner.java</include>
+                        <include>**/Runner*.java</include>
                     </includes>
                     <parallel>classes</parallel>
                     <threadCount>${parallel.tests}</threadCount>
@@ -174,7 +179,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>

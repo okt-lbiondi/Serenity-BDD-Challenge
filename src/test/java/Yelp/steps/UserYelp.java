@@ -32,6 +32,7 @@ public class UserYelp extends ScenarioActor {
     public void enterFirstResult(){
         mainPage.selectFirstResults();
         Set<String> handles = mainPage.getDriver().getWindowHandles();
+        mainPage.getDriver().close();
         mainPage.getDriver().switchTo().window(handles.toArray()[1].toString());
     }
 

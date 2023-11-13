@@ -45,8 +45,8 @@ public class MainPage extends PageObject {
     }
 
     public void searchTypeRestaurant(String restaurant){
-        searchBox.click();
         searchBox.clear();
+        searchBox.click();
         searchBox.sendKeys(restaurant);
         searchButton.click();
         myListOfRestaurants=withTimeoutOf(20, TimeUnit.SECONDS).findAll(By.xpath(xpathRestaurantName));
